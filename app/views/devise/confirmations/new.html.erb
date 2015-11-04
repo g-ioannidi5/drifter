@@ -1,0 +1,35 @@
+<div class="section section-breadcrumbs">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>Confirmation</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+        <div class="row">
+          <div class="col-sm-5">
+            <div class="basic-login">
+
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name)) do |f| %>
+<h1>Resend confirmation instructions</h1>
+  <%= devise_error_messages! %>
+
+  <div class="form-group"><%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true %></div>
+
+<%= submit_tag "Resend confirmation instructions", class: "btn btn-large btn-primary" %>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+<%= render "devise/shared/links" %>

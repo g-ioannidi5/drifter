@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users
+ root :to  => 'drifter#index'
+
+  match 'about', :to => 'drifter#about', via: :get
+
+  match 'profile', :to => 'drifter#profile', via: :get
+  match 'beenTo', :to => 'drifter#beenTo', via: :get
+  match 'wishTo', :to => 'drifter#wishTo', via: :get
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
