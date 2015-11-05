@@ -1,0 +1,21 @@
+ActionMailer::Base.delivery_method = :smtp
+	ActionMailer::Base.smtp_settings = {
+  		:address              => "smtp.gmail.com",
+  		:port                 => '587',
+  		:domain               => 'baci.lindsaar.net',
+  		:user_name            => 'driftersouthampton@gmail.com',
+  		:password             => 'drifterPassword1',
+  		:authentication       => :plain,
+  		:enable_starttls_auto => true  
+	}
+
+
+
+
+
+
+
+
+
+
+
