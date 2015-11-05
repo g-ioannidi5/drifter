@@ -1,13 +1,4 @@
-<% if student_signed_in? %>
-<div id = "center">
-  <p> Please sign out from Student to sign in as a Lecturer </p> <button>  <%= link_to('Sign out', destroy_student_session_path, :method => :delete) %> </button>
-</div>
-<% elsif lecturer_signed_in? %>
-<div id = "center">
-  <p> Please sign out from Lecturer to sign in as a Student </p> <button>  <%= link_to('Sign out', destroy_student_session_path, :method => :delete) %> </button>
-</div>
-<% else %>
-<p id="notice"><%= notice %></p>
+
 <!-- Page Title -->
     <div class="section section-breadcrumbs">
       <div class="container">
@@ -51,7 +42,6 @@
   </div>
 <% end %>
 <%= render "devise/shared/links" %>
-<% end %>
   </div>
           </div>
         </div>
