@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <title>Drifter: Dream Discover Share</title>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <title>Social Network Template</title>
 
     <!-- App Styling Bundle -->
-    <link href="stylesheets/default.min.css" rel="stylesheet">
+    <link href="css/default.min.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     
@@ -49,7 +43,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li class="dropdown-header">Public User Pages</li>
-                            <li><a href="user-public-timeline.html">Timeline</a>
+                            <li class="active"><a href="user-public-timeline.html">Timeline</a>
                             </li>
                             <li><a href="user-public-profile.html">About</a>
                             </li>
@@ -60,7 +54,7 @@
                             </li>
                             <li><a href="user-private-profile.html">Profile</a>
                             </li>
-                            <li class="active"><a href="index.html">Timeline</a>
+                            <li><a href="index.html">Timeline</a>
                             </li>
                             <li><a href="user-private-users.html">Friends</a>
                             </li>
@@ -133,42 +127,6 @@
             <!-- /.navbar-collapse -->
             </div>
     </div>
-    <nav class="navbar navbar-subnav navbar-static-top" role="navigation">
-        <div class="container">
-
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#subnav">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="fa fa-ellipsis-h"></span>
-                </button>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="subnav">
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="index.html"><i class="fa fa-fw icon-ship-wheel"></i> My Timeline</a>
-                    </li>
-                    <li>
-                        <a href="user-private-profile.html"><i class="fa fa-fw icon-user-1"></i> Edit Profile</a>
-                    </li>
-                    <li>
-                        <a href="user-private-users.html"><i class="fa fa-fw fa-group"></i> Manage Friends</a>
-                    </li>
-                    <li>
-                        <a href="user-private-messages.html"><i class="fa fa-fw icon-comment-fill-1"></i> Messages</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right hidden-xs">
-                    <li><a href="login.html">Logout  <i class="fa fa-fw icon-unlock-fill"></i></a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- /.navbar-collapse -->
-            </div>
-    </nav>
     <div class="sidebar right">
         <div class="chat-search">
             <input type="text" class="form-control" placeholder="Search" />
@@ -347,7 +305,7 @@
             </a>
                 </div>
                 <ul class="cover-nav">
-                    <li class="active"><a href="index.html"><i class="fa fa-fw icon-ship-wheel"></i> Timeline</a>
+                    <li><a href="index.html"><i class="fa fa-fw icon-ship-wheel"></i> Timeline</a>
                     </li>
                     <li><a href="user-public-profile.html"><i class="fa fa-fw icon-user-1"></i> About</a>
                     </li>
