@@ -22,5 +22,16 @@ module Drifter
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Enabling customizing assets folder
+    config.assets.enabled = true
+
+    # New paths for css javascripts and fonts
+    config.assets.paths << Rails.root.join("app", "assets", "css")
+    config.assets.paths << Rails.root.join("app", "assets", "js")
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.precompile += %w( .svg .eot .woff .ttf )
+    config.assets.paths << Rails.root.join("app", "assets", "images", "people")
+    config.assets.paths << Rails.root.join("app", "assets", "images", "social")
   end
 end
