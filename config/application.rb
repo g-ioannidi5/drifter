@@ -29,5 +29,7 @@ module Drifter
     # New paths for css javascripts and fonts
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.assets.precompile += %w( .svg .eot .woff .ttf )
+    config.assets.paths << Rails.root.join("app", "assets", "images", "people")
+    config.assets.paths << Rails.root.join("app", "assets", "images", "social")
   end
 end
