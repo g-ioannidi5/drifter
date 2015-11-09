@@ -9,6 +9,10 @@ Rails.application.config.assets.precompile += %w( vendor.min.js )
 
 Rails.application.config.assets.precompile += %w( scripts.min.js )
 
+Rails.application.config.assets.precompile += %w( vendor.js )
+
+Rails.application.config.assets.precompile += %w( scripts.js )
+
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 
