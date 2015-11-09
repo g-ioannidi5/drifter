@@ -33,5 +33,7 @@ module Drifter
     config.assets.paths << Rails.root.join("app", "assets","images", "people", "50")
     config.assets.paths << Rails.root.join("app", "assets","images", "people","110")
     config.assets.paths << Rails.root.join("app", "assets","images", "social", "100")
+    config.assets.paths << Rails.root.join("app", "assets","fonts")
+    config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
   end
 end
