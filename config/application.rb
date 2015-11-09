@@ -29,5 +29,9 @@ module Drifter
     # New paths for css javascripts and fonts
     config.assets.paths << Rails.root.join("app", "assets", "css")
     config.assets.paths << Rails.root.join("app", "assets","js")
+    config.assets.paths << Rails.root.join("app", "assets","images", "people")
+    config.assets.paths << Rails.root.join("app", "assets","images", "people", "50")
+    config.assets.paths << Rails.root.join("app", "assets","images", "people","110")
+    config.assets.paths << Rails.root.join("app", "assets","images", "social", "100")
   end
 end
