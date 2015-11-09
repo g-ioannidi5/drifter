@@ -27,9 +27,7 @@ module Drifter
     config.assets.enabled = true
 
     # New paths for css javascripts and fonts
-    config.assets.paths << Rails.root.join("app", "assets", "fonts")
-    config.assets.precompile += %w( .svg .eot .woff .ttf )
-    config.assets.paths << Rails.root.join("app", "assets", "images", "people")
-    config.assets.paths << Rails.root.join("app", "assets", "images", "social")
+    config.assets.paths << Rails.root.join("app", "assets", "css")
+    config.assets.paths << Rails.root.join("app", "assets","js")
   end
 end
