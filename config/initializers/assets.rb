@@ -7,6 +7,8 @@ Rails.application.config.assets.precompile += %w( default.min.css )
 
 Rails.application.config.assets.precompile += %w( vendor.min.js )
 
+Rails.application.config.assets.precompile += %w( login.css )
+
 Rails.application.config.assets.precompile += %w( scripts.min.js )
 
 Rails.application.config.assets.precompile += %w( vendor.js )
