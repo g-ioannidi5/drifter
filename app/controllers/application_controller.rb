@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
 
   end	
 
+
+  def editProfile
+
+  end	
 end
