@@ -22,5 +22,31 @@ module Drifter
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Enabling customizing assets folder
+    config.assets.enabled = true
+
+    # New paths for css javascripts and fonts
+    config.assets.paths << Rails.root.join("app", "assets", "css")
+    config.assets.paths << Rails.root.join("app", "assets","js")
+    config.assets.paths << Rails.root.join("app", "assets","images", "people")
+    config.assets.paths << Rails.root.join("app", "assets","images", "people", "50")
+    config.assets.paths << Rails.root.join("app", "assets","images", "people","110")
+    config.assets.paths << Rails.root.join("app", "assets","images", "social", "100")
+    config.assets.paths << Rails.root.join("app", "assets","fonts")
+    config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
+
+    config.to_prepare do
+    Devise::SessionsController.layout "login"
+    Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "register" }
+    Devise::ConfirmationsController.layout "confirmation"
+    # Devise::UnlocksController.layout "your_layout_name"
+    Devise::PasswordsController.layout proc{ |controller| user_signed_in? ? "application" : "password" }
+    end
+
+
+    Dir.glob("#{Rails.root}/app/assets/images/**/").each do |path|
+      Rails.application.config.assets.paths << path
+    end    
   end
 end

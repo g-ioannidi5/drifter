@@ -15,3 +15,12 @@
  *= require_self
  *= require_tree .
  */
+#logo_main {
+	width: 134px;
+	height: 51px;
+	vertical-align: middle;
+	margin-top: -15px;
+    margin-right: 3px;
+
+}
+

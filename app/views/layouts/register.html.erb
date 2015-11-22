@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Drifter: Dream Discover Share</title>
+  <%= stylesheet_link_tag    'login'%>
+  <%= stylesheet_link_tag    'default.min'%>
+  
+  <%= csrf_meta_tags %>
+  	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Social network for trips">
+    <meta name="author" content="Sawan J. Kapai Harpalani & Giorgos Ioannidis">
+</head>
+<body class="login">
+
+<%= render partial: "registerLayout" %>
+
+<%= render partial: "layouts/fixedFooter" %>
+
+<%= javascript_include_tag 'vendor.min'%>
+<%= javascript_include_tag 'scripts.min'%>
+
+</body>
+</html>

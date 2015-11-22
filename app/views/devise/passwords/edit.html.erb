@@ -1,20 +1,12 @@
-<div class="section section-breadcrumbs">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h1>Change your password</h1>
-          </div>
-        </div>
-      </div>
-    </div>
+<div id="content">
+        <div class="container-fluid">
+            <div class="lock-container">
+                <h1>Account Access</h1>
+                <div class="panel panel-default text-center">
 
-    <div class="section">
-        <div class="container">
-        <div class="row">
-          <div class="col-sm-5">
-            <div class="basic-login">
-
-
+                    <%= image_tag("green_logo_text.png", id: "logo_login") %>
+                    <div class="panel-body">
+                        <div class="panel-body">
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put}) do |f| %>
 
@@ -32,4 +24,14 @@
   	<%= f.submit "Change my password", {class: 'btn btn-large btn-primary'} %>
   </div>
 <% end %>
+</div>
 <%= render "devise/shared/links" %>
+  </div>
+
+
+
+              
+                    </div>
+                </div>
+            </div>
+        </div>
