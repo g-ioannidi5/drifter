@@ -68,11 +68,10 @@
 				<div class="panel-footer share-buttons">
 					<a href="#"> <i class="fa fa-map-marker"></i> </a>
 					<a href="#"> <i class="fa fa-video-camera"></i> </a>
+					<a onclick="photo()"> <i class="fa fa-photo"></i> </a>
 					<div class="form-group hidden">
 						<%= f.file_field :attachment %>
 					</div>
-					<a onclick="photo()"> <i class="fa fa-photo"></i> </a>
-
 					<%= f.button :post, class: 'btn btn-primary btn-xs pull-right display-none' do%>
 					Post
 					<% end %>
