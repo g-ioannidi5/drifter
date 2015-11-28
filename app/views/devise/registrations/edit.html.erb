@@ -26,19 +26,19 @@
 						</div>
 						<% end %>
 						<div class="form-group">
-							<%= f.label :password, :class => 'col-sm-3' %>
+							<%= f.label :password, :class => 'col-sm-3 control-label' %>
 							<div class="col-sm-9">
 								<%= f.password_field :password, class: 'form-control', placeholder: 'Leave it blank if you do not want to change it!', autocomplete: "off" %>
 							</div>
 						</div>
 						<div class="form-group">
-							<%= f.label :password_confirmation, :class => 'col-sm-3' %>
+							<%= f.label :password_confirmation, :class => 'col-sm-3 control-label' %>
 							<div class="col-sm-9">
 								<%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Paasword Confirmation', autocomplete: "off" %>
 							</div>
 						</div>
 						<div class="form-group">
-							<%= f.label :current_password, :class => 'col-sm-3'%>
+							<%= f.label :current_password, :class => 'col-sm-3 control-label'%>
 							<div class="col-sm-9">
 								<%= f.password_field :current_password, class: 'form-control', placeholder: 'In order to make changes confirm using your current password', autocomplete: "off" %>
 							</div>
@@ -50,22 +50,33 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<%= f.label :avatar, :class => 'col-sm-3 control-label' do %>
+							<%= f.label :avatar, :class => 'col-sm-3 control-label' %>
 							<div class="col-sm-9">
-								<%= f.file_field :avatar %>
+								<%= f.file_field :avatar,  class: 'form-control' %>
 								<%= f.hidden_field :avatar_cache %>
 							</div>
-							<% end %>
 						</div>
 						<div class="form-group">
-							<%= f.submit "Update", {class:  "btn btn-primary"} %>
+							<%= f.button :submit, :class => "btn btn-primary" do %>
+							Update <i class="fa fa-refresh"></i>
+							<% end %>
 						</div>
 						<% end %>
-						<h3>Cancel my account</h3>
-						<p>
-							Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
-						</p>
-						<%= link_to "Back", :back %>
+						<div class="col-xs-12 .col-md-8">
+							<h4>Deactivate Account</h4>
+							<p>
+								We're sorry to hear you'd like to remove your account. By pressing the button bellow, your account
+								will be deactivated. You should know:
+							</p>
+							<p>
+								<strong> Your photos, trips, progress, comments, likes, messages and friendships (everything)
+								will be removed permanently and will not be recoverable.</strong>
+							</p>
+							<%= button_to registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete,  class: 'btn btn-danger' do%>
+							Deactivate Account <i class="fa fa-times"></i>
+							<% end %>
+							<%= link_to "Back", :back, {:class => "comment-author"} %>
+						</div>
 					</div>
 				</div>
 			</div>
