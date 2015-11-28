@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
   
   def home
-
+    @post = Post.new
   end
 
 
