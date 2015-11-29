@@ -1,29 +1,23 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<div class="panel panel-default share">
+	<%= form_for(@post) do |f| %>
+	<div class="panel-heading panel-heading-gray title">
+		What&acute;s new
+	</div>
+	<div class="panel-body">
+		<%= f.text_area :content, class: 'form-control share-text', autofocus: true, placeholder: 'Share your status...', rows: 3 %>
 
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	</div>
+	<div class="panel-footer share-buttons">
+		<a href="#"> <i class="fa fa-map-marker"></i> </a>
+		<a href="#"> <i class="fa fa-video-camera"></i> </a>
+		<a onclick="photo()"> <i class="fa fa-photo"></i> </a>
+		<div class="form-group hidden">
+			<%= f.file_field :attachment %>
+		</div>
+		<%= f.button :post, class: 'btn btn-primary btn-xs pull-right display-none' do%>
+		Post
+		<% end %>
 
-  <div class="field">
-    <%= f.label :attachment %><br>
-    <%= f.text_field :attachment %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+	</div>
+	<% end %>
+</div>
