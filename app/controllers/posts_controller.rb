@@ -5,6 +5,10 @@ class PostsController < ApplicationController
 
   respond_to :html
 
+  def index
+    @posts = Post.all
+  end
+
   def show
     respond_with(@post)
   end
@@ -16,7 +20,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to root_path
     else
-      redirect_to root_path, notice: @post.errors.full_messages.first
+      redirect_to posts_path, notice: @post.errors.full_messages.first
     end
   end
 

@@ -56,29 +56,7 @@
 	</div>
 	<div class="timeline row" data-toggle="gridalicious">
 		<div class="timeline-block">
-			<div class="panel panel-default share">
-				<%= form_for(Post.new) do |f| %>
-				<div class="panel-heading panel-heading-gray title">
-					What&acute;s new
-				</div>
-				<div class="panel-body">
-					<%= f.text_area :content, class: 'form-control share-text', autofocus: true, placeholder: 'Share your status...', rows: 3 %>
-
-				</div>
-				<div class="panel-footer share-buttons">
-					<a href="#"> <i class="fa fa-map-marker"></i> </a>
-					<a href="#"> <i class="fa fa-video-camera"></i> </a>
-					<a onclick="photo()"> <i class="fa fa-photo"></i> </a>
-					<div class="form-group hidden">
-						<%= f.file_field :attachment %>
-					</div>
-					<%= f.button :post, class: 'btn btn-primary btn-xs pull-right display-none' do%>
-					Post
-					<% end %>
-
-				</div>
-				<% end %>
-			</div>
+			<%= render partial: "posts/form" %>
 		</div>
 		<div class="timeline-block">
 			<div class="panel panel-default relative">
