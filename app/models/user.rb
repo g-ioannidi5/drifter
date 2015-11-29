@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   validates_presence_of   :avatar, :name, :email, :date_of_birth
   validates_integrity_of  :avatar
   validates_processing_of :avatar
+  
+  # posts
+  has_many :posts
+  
 end

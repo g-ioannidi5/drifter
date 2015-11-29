@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
+  resources :posts
+
   devise_for :users
   devise_scope :user do
-  authenticated :user do
-    root :to => 'application#home', as: :authenticated_root
+    authenticated :user do
+      root :to => 'application#home', as: :authenticated_root
+    end
+    unauthenticated :user do
+      root :to => 'devise/sessions#new', as: :unauthenticated_root
+    end
   end
-  unauthenticated :user do
-    root :to => 'devise/sessions#new', as: :unauthenticated_root
-  end
-end
+  root to: 'application#home'
   # match 'about', :to => 'drifter#about', via: :get
 
   # match 'profile', :to => 'drifter#profile', via: :get

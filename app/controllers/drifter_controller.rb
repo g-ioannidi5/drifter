@@ -1,5 +1,10 @@
 class DrifterController < ApplicationController
   def index
+    @post = Post.new
+  end
+  
+  def home
+    @post = Post.new
   end
 
   def about
