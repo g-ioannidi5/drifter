@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :posts
 
-  root to: 'application#home'
+  
   
   devise_for :users
   devise_scope :user do
