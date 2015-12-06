@@ -1,0 +1,9 @@
+<% if @user3 %>
+
+	  <a class="navbar-brand" href="/user/<%=@user3.username %>"><%= image_tag(@user3.avatar.url, class: "img-circle", width: "40") %> </a>
+	<%= @user3.email %>
+	
+	<% else %>
+	
+	<h1> No available username <%= params[:search] %> </h1>
+	<% end %>

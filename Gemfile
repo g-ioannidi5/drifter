@@ -51,6 +51,11 @@ group :development, :test do
   gem 'twitter-bootstrap-rails'
   
   gem 'carrierwave'
+  
+  gem 'will_paginate'
+  
+  gem 'acts_as_votable', '~> 0.10.0'
+  
 
 group :development, :production, :test do
   gem 'devise', :git => 'https://github.com/plataformatec/devise.git', :branch => 'lm-rails-4-2'

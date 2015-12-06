@@ -18,4 +18,6 @@ class DrifterController < ApplicationController
 
   def wishTo
   end
+  
+
 end
