@@ -1,5 +1,4 @@
 
-
       <div class="container">
         <div class="panel panel-default">
             <ul class="nav nav-tabs" role="tablist">
@@ -10,19 +9,15 @@
             </ul>
             <div class="tab-content">
                 <div class="tab-pane fade active in" id="home">
-	                <%= will_paginate @photos , :param_name => 'photos_page'%>
+	            	<%= will_paginate @photos , :param_name => 'photos_page'%>
 	                <br />
-                    <%= image_tag(@user2.avatar.url, width: "400") %>
-                    
-                    				
-    <% @photos.each do |photo| %>
-	     <%= image_tag(photo.attachment.url, width: "630") %>
-      <br />
-      <%= will_paginate @photos , :param_name => 'photos_page'%>
-    <% end %>
-                    
-
-                </div>
+                    <%= image_tag(@user2.avatar.url, width: "400") %>                     				
+					<% @photos.each do |photo| %>
+						<%= image_tag(photo.attachment.url, width: "630") %>
+						<br />
+						<%= will_paginate @photos , :param_name => 'photos_page'%>
+					<% end %>
+            	</div>
                 <div class="tab-pane fade" id="profile">
                     <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
                 </div>
@@ -36,33 +31,38 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-
                 <!--Friends -->
                 <div class="panel panel-default">
                     <div class="panel-heading panel-heading-gray">
-                        <i class="fa fa-info"> About</i>
-                        
-                        
+                        <i class="fa fa-info"> About</i>                 
                     </div>
                     <div class="panel-body">
                         <ul class="list-unstyled profile-about">
-	                                                    <li>
-                              <div class="row">
-                                    
-                                    <div class="col-sm-4"> <%= image_tag(@user2.avatar.url, class: "img-circle", width: "100") %> </div>
-                                    <div class="col-sm-8">
-                                        <% if current_user != @user2 %>
-      <% if current_user.friends? @user2 %>
-        <%= button_to  unfollow_user_path(@user2), class: "btn btn-default btn-sm", method: :delete do %>
-             <i class=" fa fa-share"></i> Unfollow 
-     <% end %>
-      <% else %>
-        <%= button_to follow_user_path(@user2), class: "btn btn-default btn-sm", method: :post do %>
-             <i class=" fa fa-share"></i> Follow 
-     <% end %>
-      <% end %>
-    <% end %>
+	                        <li>
+                              	<div class="row">                                    
+                                    <div class="col-sm-4"> 
+	                                    <%= image_tag(@user2.avatar.url, class: "img-circle", width: "100") %> 
                                     </div>
+                                    <div class="col-sm-8">
+                                       	<% if current_user != @user2 %>
+											<% if current_user.friends? @user2 %>
+												<%= button_to  unfollow_user_path(@user2), class: "btn btn-default btn-sm", method: :delete do %>
+													<i class=" fa fa-share"></i> Unfollow 
+												<% end %>
+											<% else %>
+												<%= button_to follow_user_path(@user2), class: "btn btn-default btn-sm", method: :post do %>
+													<i class=" fa fa-share"></i> Follow 
+												<% end %>
+											<% end %>
+										<% end %>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                              <div class="row">
+                                    <div class="col-sm-4"><span class="text-muted">Username</span>
+                                    </div>
+                                    <div class="col-sm-8"><%=@user2.username%></div>
                                 </div>
                             </li>
                             <li>
@@ -100,17 +100,34 @@
                     </div>
                     <ul class="list-unstyled friends-list">
 	                    <% @user2.friends.each do |friend| %>
-	                    <li>
-  <p><%= link_to   image_tag(friend.avatar.url, class: "img-circle", width: "50"), controller: 'application', action: 'show', username: friend.username %>
-    <% if current_user == @user2 %> 
-     <%= button_to  unfollow_user_path(friend), class: "btn btn-default btn-sm", method: :delete do %>
-     <i class=" fa fa-share"></i> Unfollow 
-     <% end %>
-    <% end %>
-  <% end %>
-	                    </li>
+	                    	<li>
+								<p><%= link_to image_tag(friend.avatar.url, class: "img-circle", width: "50"), controller: 'application', action: 'show', username: friend.username %></p>
+								<% if current_user == @user2 %> 
+									<%= button_to  unfollow_user_path(friend), class: "btn btn-default btn-sm", method: :delete do %>
+										<i class=" fa fa-share"></i> Unfollow 
+									<% end %>
+								<% end %>
+							</li>
+						<% end %>			
                     </ul>
                     <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading panel-heading-gray">
+				<i class="fa fa-bookmark"></i> Public Activity
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+						<% @activities.each do |activity| %>
+							<div class="activity">
+								<%= link_to activity.owner.username, activity.owner if activity.owner %>
+								<%= render_activity activity %>
+  							</div>
+  						<% end %>
+            		</div>
                 </div>
             </div>
         </div>
@@ -193,41 +210,40 @@
 -->
             <div class="tab-content">
                 <div class="tab-pane fade active in" id="home">
-				<%= will_paginate @posts, :param_name => 'posts_page' %>
-    <% @posts.each do |post| %>
-    <% if post.attachment.url %>
-	     <%= image_tag(post.attachment.url, width: "400") %>
-	    <br />
-	    <br />
-	    <% else %>
-	    <br />
-	    <% end %>
-        <%= post.content %>
-        <br />
-        <br />
-        <% if (current_user.voted_for? post) %>
-        	<% if current_user.liked? post %>
-        		<%= button_to  unvoteUp_post_path(post),  method: :put  do%>
-				<i class=" fa fa-thumbs-up fa-lg"></i> <%= post.votes_for.up.size %> Unvote Like
-				<% end %>
-			<% elsif  current_user.disliked? post %>
-				<%= button_to  unvoteDown_post_path(post),  method: :put  do%>
-				<i class=" fa fa-thumbs-down fa-lg"></i> <%= post.votes_for.down.size %> Unvote Dislike
-				<% end %>
-			<% end %>
-		<% else %>
-			 <%= button_to  like_post_path(post),  method: :put  do%>
-			 <i class=" fa fa-thumbs-up fa-lg"></i> <%= post.votes_for.up.size %>
-			 <% end %>
-			 <%= button_to dislike_post_path(post), method: :put do%>
-			 <i class=" fa fa-thumbs-down fa-lg"></i> <%= post.votes_for.down.size %>
-			 <% end %>
-		<% end %>
-		 <br />
-        <%= post.created_at.strftime("%a, %d %b. %Y") %>
-      <br />
-    <% end %>
-
+					<%= will_paginate @posts, :param_name => 'posts_page' %>
+					<% @posts.each do |post| %>
+						<% if post.attachment.url %>
+							<%= image_tag(post.attachment.url, width: "400") %>
+							<br />
+							<br />
+						<% else %>
+							<br />
+						<% end %>
+						<%= post.content %>
+						<br />
+						<br />
+						<% if (current_user.voted_for? post) %>
+							<% if current_user.liked? post %>
+								<%= button_to  unvoteUp_post_path(post),  method: :put  do%>
+									<i class=" fa fa-thumbs-up fa-lg"></i> <%= post.votes_for.up.size %> Unvote Like
+								<% end %>
+							<% elsif  current_user.disliked? post %>
+								<%= button_to  unvoteDown_post_path(post),  method: :put  do%>
+									<i class=" fa fa-thumbs-down fa-lg"></i> <%= post.votes_for.down.size %> Unvote Dislike
+								<% end %>
+							<% end %>
+						<% else %>
+							<%= button_to  like_post_path(post),  method: :put  do%>
+								<i class=" fa fa-thumbs-up fa-lg"></i> <%= post.votes_for.up.size %>
+							<% end %>
+							<%= button_to dislike_post_path(post), method: :put do%>
+								<i class=" fa fa-thumbs-down fa-lg"></i> <%= post.votes_for.down.size %>
+							<% end %>
+						<% end %>
+						<br />
+						<%= post.created_at.strftime("%a, %d %b. %Y") %>
+						<br />
+					<% end %>
                             </div>
                         </div>
                     </div>

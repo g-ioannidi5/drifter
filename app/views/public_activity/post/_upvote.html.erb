@@ -1,0 +1,7 @@
+liked a post
+
+<% if activity.trackable %>
+  <%= link_to activity.trackable.content, activity.trackable %> on <%= activity.created_at.strftime("%m/%d/%Y %I:%M%p") %>
+<% else %>
+  which has since been removed
+<% end %>

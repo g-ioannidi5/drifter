@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Attachment:</strong>
-  <%= @post.attachment %>
+  <%= image_tag(@post.attachment.url, width: "630") %>
 </p>
 
 <p>
@@ -12,8 +11,8 @@
 
 <p>
   <strong>User:</strong>
-  <%= @post.user %>
+  <%= @post.user.username %>
 </p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<% if current_user = @post.user %>
+	<%= link_to 'Edit', edit_post_path(@post) %> 
+<% end %>

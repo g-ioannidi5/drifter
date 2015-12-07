@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
 	mount_uploader :avatar, AvatarUploader
 	acts_as_voter
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -11,7 +10,6 @@ class User < ActiveRecord::Base
   validates_integrity_of  :avatar
   validates_processing_of :avatar
   
-
   # posts
   has_many :posts
   
@@ -31,8 +29,5 @@ class User < ActiveRecord::Base
   def unfollow other_user
     friends.destroy(other_user)
   end
-  
-   
-
   
 end

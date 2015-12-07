@@ -38,7 +38,7 @@
                             <!-- <img src="assets/guy-5.jpg" alt="Bill" class="img-circle" width="40" /> Bill <span class="caret"></span> -->
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="user-private-profile.html">Profile</a>
+                            <li><%= link_to   "Profile", controller: 'application', action: 'show', username: current_user.username %>
                             </li>
                             <li>
                                 <%= link_to('Edit registration', edit_user_registration_path) %>

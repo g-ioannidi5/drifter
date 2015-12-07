@@ -15,7 +15,7 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-	    <td> <%= image_tag(post.attachment.url) %> </td>
+	    <td> <%= image_tag(post.attachment.url, width: "630") %> </td>
         <td><%= post.content %></td>
         <td><%= post.user.email %></td>
         <td><%= link_to 'Show', post %></td>
