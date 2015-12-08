@@ -1,18 +1,18 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Attachment:</strong>
-  <%= image_tag(@post.attachment.url, width: "630") %>
-</p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @post.user.username %>
-</p>
-<% if current_user = @post.user %>
-	<%= link_to 'Edit', edit_post_path(@post) %> 
-<% end %>
+<div class="center-block col-md-6 " style="float:none !important; ">
+	<div class="timeline-block">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="media">
+					<a href="" class="pull-left"> <%= image_tag(@post.user.avatar, :class => "media-object", :style => "widht: 100px; height: 100px;") %> </a>
+					<div class="media-body">
+						<a href="#" class="pull-right text-muted"><i class="icon-reply-all-fill fa fa-2x "></i></a>
+						<a href=""><%= @post.user.name %></a>
+						<span>on 15th January, 2014</span>
+					</div>
+				</div>
+			</div>
+			<%= image_tag(@post.attachment.url, :class => "img-responsive") %>
+		</div>
+	</div>
+</div>
