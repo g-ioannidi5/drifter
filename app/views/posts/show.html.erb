@@ -8,11 +8,14 @@
 					<div class="media-body">
 						<a href="#" class="pull-right text-muted"><i class="icon-reply-all-fill fa fa-2x "></i></a>
 						<a href=""><%= @post.user.name %></a>
-						<span>on 15th January, 2014</span>
+						<span><%= @post.created_at %></span>
 					</div>
 				</div>
 			</div>
-			<%= image_tag(@post.attachment.url, :class => "img-responsive") %>
+			<div class="panel-body">
+				<p><%= @post.content %></p>
+				<%= image_tag(@post.attachment.url, :class => "img-responsive", :style => "margin-left: auto; margin-right: auto") %>
+			</div>
 		</div>
 	</div>
 </div>
