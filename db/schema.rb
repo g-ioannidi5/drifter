@@ -30,6 +30,27 @@ ActiveRecord::Schema.define(version: 20151207082916) do
   add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
   add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
 
+  create_table "follows", force: :cascade do |t|
+    t.integer  "followable_id",                   null: false
+    t.string   "followable_type",                 null: false
+    t.integer  "follower_id",                     null: false
+    t.string   "follower_type",                   null: false
+    t.boolean  "blocked",         default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
+  add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.boolean  "approved"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string   "attachment"
     t.text     "content"
