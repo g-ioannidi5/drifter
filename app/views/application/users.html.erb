@@ -1,4 +1,4 @@
- <% if @user3 %>
+<% if @user3 %>
 <div class="panel panel-default">
 	<div class="panel-heading panel-heading-gray">
 		Users
@@ -27,7 +27,14 @@
 				<td><a href="/user/<%= @user3.username %>"><%= image_tag(@user3.avatar.url, class: "img-circle", width: "40") %><%= @user3.name %></a></td>
 				<td><%= @user3.username %></td>
 				<td><%= @user3.email %></td>
-				<td>61</td>
+				<td> <% if current_user != @user3 %>
+				<% if current_user.friends? @user3 %>
+				<button class="btn btn-success"> <i class=" fa fa-check"></i> Following</button>
+				<% else %>
+				<%= button_to follow_user_path(@user3), class: "btn btn-primary", method: :post do %> <i class=" fa fa-user"></i> Follow
+				<% end %>
+				<% end %>
+				<% end %> </td>
 			</tr>
 		</tbody>
 	</table>
