@@ -46,12 +46,12 @@
                                     <div class="col-sm-8">
                                        	<% if current_user != @user2 %>
 											<% if current_user.friends? @user2 %>
-												<%= button_to  unfollow_user_path(@user2), class: "btn btn-default btn-sm", method: :delete do %>
-													<i class=" fa fa-share"></i> Unfollow 
+												<%= button_to  unfollow_user_path(@user2), class: "btn btn-danger", method: :delete do %>
+													<i class=" fa fa-times"></i> Unfollow 
 												<% end %>
 											<% else %>
-												<%= button_to follow_user_path(@user2), class: "btn btn-default btn-sm", method: :post do %>
-													<i class=" fa fa-share"></i> Follow 
+												<%= button_to follow_user_path(@user2), class: "btn btn-primary", method: :post do %>
+													<i class=" fa fa-user"></i> Follow 
 												<% end %>
 											<% end %>
 										<% end %>
