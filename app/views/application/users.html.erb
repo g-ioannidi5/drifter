@@ -1,6 +1,38 @@
-<% if @user3 %>
-	 <a class="navbar-brand" href="/user/<%=@user3.username %>"><%= image_tag(@user3.avatar.url, class: "img-circle", width: "40") %> </a>
-	<%= @user3.email %>
+ <% if @user3 %>
+<div class="panel panel-default">
+	<div class="panel-heading panel-heading-gray">
+		Users
+	</div>
+
+	<!-- Data table -->
+	<table id="data-table" class="table" cellspacing="0" width="100%">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Username</th>
+				<th>Email</th>
+				<th>Status</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<th>Name</th>
+				<th>Username</th>
+				<th>Email</th>
+				<th>Status</th>
+			</tr>
+		</tfoot>
+		<tbody>
+			<tr>
+				<td><a href="/user/<%= @user3.username %>"><%= image_tag(@user3.avatar.url, class: "img-circle", width: "40") %><%= @user3.name %></a></td>
+				<td><%= @user3.username %></td>
+				<td><%= @user3.email %></td>
+				<td>61</td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- // Data table -->
+</div>
 <% else %>
-	<h1> No available username <%= params[:search] %> </h1>
+<h1> No available username <%= params[:search] %> </h1>
 <% end %>
