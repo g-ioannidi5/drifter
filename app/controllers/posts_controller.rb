@@ -16,8 +16,7 @@ class PostsController < ApplicationController
       post.user = current_user
     end
     if @post.save
-	    @post.create_activity :create, owner: current_user
-		redirect_to root_path
+		  redirect_to root_path
     else
       redirect_to posts_path, notice: @post.errors.full_messages.first
     end
