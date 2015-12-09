@@ -36,10 +36,11 @@
 		</div>
 		<div class="cover-info">
 			<div class="avatar">
-				<img src="assets/110/guy-5.jpg" alt="people" />
+				<%= image_tag(current_user.avatar.url) %>
+				
 			</div>
 			<div class="name">
-				<a href="#"> Bill Demian </a>
+				<a href="/user/<%= current_user.username %>"> <%= current_user.name %> </a>
 			</div>
 			<ul class="cover-nav">
 				<li class="active">
