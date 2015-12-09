@@ -1,4 +1,5 @@
 <% if @user3 %>
+
 <div class="panel panel-default">
 	<div class="panel-heading panel-heading-gray">
 		Users
@@ -23,23 +24,26 @@
 			</tr>
 		</tfoot>
 		<tbody>
+		<% @user3.each do |user| %>
 			<tr>
-				<td><a href="/user/<%= @user3.username %>"><%= image_tag(@user3.avatar.url, class: "img-circle", width: "40") %><%= @user3.name %></a></td>
-				<td><%= @user3.username %></td>
-				<td><%= @user3.email %></td>
-				<td> <% if current_user != @user3 %>
-				<% if current_user.friends? @user3 %>
+				<td><a href="/user/<%= user.username %>"><%= image_tag(user.avatar.url, class: "img-circle", width: "40") %> <%= user.name %></a></td>
+				<td><%= user.username %></td>
+				<td><%= user.email %></td>
+				<td> <% if current_user != user %>
+				<% if current_user.friends? user %>
 				<button class="btn btn-success"> <i class=" fa fa-check"></i> Following</button>
 				<% else %>
-				<%= button_to follow_user_path(@user3), class: "btn btn-primary", method: :post do %> <i class=" fa fa-user"></i> Follow
+				<%= button_to follow_user_path(user), class: "btn btn-primary", method: :post do %> <i class=" fa fa-user"></i> Follow
 				<% end %>
 				<% end %>
 				<% end %> </td>
 			</tr>
+		<%end%>
 		</tbody>
 	</table>
 	<!-- // Data table -->
 </div>
+
 <% else %>
 <h1> No available username <%= params[:search] %> </h1>
 <% end %>

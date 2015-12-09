@@ -14,7 +14,8 @@ class ApplicationController < ActionController::Base
   	end
   	  
   	def users  	  
-	  @user3 = User.where("username = ? OR name = ?", params[:search]).first
+	  query = params[:search]
+	  @user3 = User.where("username LIKE ? OR name LIKE ?", "%#{query}%", "%#{query}%")
 	end
 
 	def findFriends	 
