@@ -25,7 +25,7 @@
 	                        <li>
                               	<div class="row">                                    
                                     <div class="col-sm-4"> 
-	                                    <%= image_tag(@user2.avatar.url, class: "img-circle", width: "100") %> 
+	                                    <%= image_tag(@user2.avatar.url, class: "img-responsive", height: "240") %> 
                                     </div>
                                     <div class="col-sm-8">
                                        	<% if current_user != @user2 %>
@@ -84,12 +84,7 @@
                     <ul class="list-unstyled friends-list">
 	                    <% @user2.friends.each do |friend| %>
 	                    	<li>
-								<p><%= link_to image_tag(friend.avatar.url, class: "img-circle", width: "50"), controller: 'application', action: 'show', username: friend.username %></p>
-								<% if current_user == @user2 %> 
-									<%= button_to  unfollow_user_path(friend), class: "btn btn-default btn-sm", method: :delete do %>
-										<i class=" fa fa-share"></i> Unfollow 
-									<% end %>
-								<% end %>
+								<%= link_to image_tag(friend.avatar.url, class: "img-responsive", width: "110"), controller: 'application', action: 'show', username: friend.username %>
 							</li>
 						<% end %>			
                     </ul>
@@ -102,16 +97,13 @@
 				<i class="fa fa-bookmark"></i> Public Activity
             </div>
             <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-4">
-						<% @activities.each do |activity| %>
-							<div class="activity">
-								<%= link_to activity.owner.username, activity.owner if activity.owner %>
-								<%= render_activity activity %>
-  							</div>
-  						<% end %>
-            		</div>
+            	<% @activities.each do |activity| %>
+                <div class="progress" style="background-color: transparent;">	
+					<%= link_to activity.owner.username, activity.owner if activity.owner %>
+					<%= render_activity activity %>
                 </div>
+               <hr>
+               <% end %>
             </div>
         </div>
         <div class="panel panel-default">
