@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 	  @user2 = User.where("username = ?", params[:username]).first
 	  @posts = Post.where("user_id = ?", @user2.id)
 	  @photos = Post.where("user_id = ? AND attachment != ?", @user2.id, "")
-	  @activities = PublicActivity::Activity.where("owner_id = ?", @user2.id)
+	  @activities = PublicActivity::Activity.where("owner_id = ?", @user2.id).last(10)
   	end
   	  
   	def users  	  
