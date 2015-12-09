@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     def show
 	    
 	  @user2 = User.where("username = ?", params[:username]).first
-	  @posts = Post.where("user_id = ?", @user2.id).paginate(:page => params[:posts_page], :per_page => 1)
+	  @posts = Post.where("user_id = ?", @user2.id)
 	  @photos = Post.where("user_id = ? AND attachment != ?", @user2.id, "")
 	  @activities = PublicActivity::Activity.where("owner_id = ?", @user2.id)
   	end
