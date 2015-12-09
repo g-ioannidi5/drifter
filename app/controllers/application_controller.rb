@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
     	@friends.each do |friend|
     		@friends2.push(friend.friend_id)
     	end
-    	@friends3 = User.where(id: @friends2)
+    	@friends3 = User.where(id: @friends2).last(9)
 		@posts = PublicActivity::Activity.where(owner_id: @friends3).order(created_at: :desc)
   	end
   	
