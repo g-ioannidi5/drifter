@@ -60,12 +60,8 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="media">
-						<a href="" class="pull-left"> <%= image_tag(post.owner.avatar, :class => "media-object", :style => "widht: 100px; height: 100px;") %> </a>
+						<a href="" class="pull-left"> <%= image_tag(post.owner.avatar, :class => "media-object", :style => "widht: 50px; height: 50px;") %> </a>
 						<div class="media-body">
-							<% if current_user = post.owner %>
-							<a href="#" class="pull-right text-muted"><i class="fa fa-edit fa-2x "></i></a>
-							<% end %>
-
 							<a href=""><%= post.owner.name %></a>
 							<span>on <%= post.created_at.strftime('%a, %d %b %Y') %> </span>
 						</div>
@@ -73,9 +69,9 @@
 				</div>
 				<div class="panel-body">
 					<p>
-						<%= post.content %>
+						<%= post.trackable.content %>
 					</p>
-					<%= image_tag(post.attachment.url, :class => "img-responsive", :style => "margin-left: auto; margin-right: auto") %>
+					<%= image_tag(post.trackable.attachment.url, :class => "img-responsive", :style => "margin-left: auto; margin-right: auto") %>
 				</div>
 			</div>
 		</div>
