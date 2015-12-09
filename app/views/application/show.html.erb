@@ -133,9 +133,11 @@
 								<small><i class="fa fa-calendar"></i> <%= post.created_at.strftime("%D") %></small>
 							</div>
 						</div>
+						<%if post.attachment.url != nil%>
 						<a href="#"">
 						<%= image_tag(post.attachment.url, class: "img-responsive", width: "550") %>
 						</a>
+						<%end%>
 						<div class="panel-body">
 						<p><%= post.content %></p>
 						<div>
