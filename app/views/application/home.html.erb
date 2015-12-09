@@ -55,6 +55,7 @@
 	</div>
 
 	<div class="col-xs-6 col-md-4">
+		<%= will_paginate @posts , :param_name => 'posts_page'%>
 		<% @posts.each do |post| %>
 		<div class="timeline-block">
 			<div class="panel panel-default">
@@ -75,6 +76,7 @@
 				</div>
 			</div>
 		</div>
+		<%= will_paginate @posts , :param_name => 'posts_page'%>
 		<%end%>
 	</div>
 

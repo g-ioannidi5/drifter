@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
     end
     @friends4 = User.where(id: @friends2).last(9)
     @friends3 = User.where(id: @friends2)
-    @posts = PublicActivity::Activity.where(owner_id: @friends3).order(created_at: :desc)
+    @posts = PublicActivity::Activity.where(owner_id: @friends3).order(created_at: :desc).paginate(:page => params[:page], :per_page => 2)
   end
 
   protected
