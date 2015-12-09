@@ -73,6 +73,26 @@
 						<%= post.trackable.content %>
 					</p>
 					<a href="/posts/<%= post.trackable.id %>"><%= image_tag(post.trackable.attachment.url, :class => "img-responsive", :style => "margin-left: auto; margin-right: auto") %></a>
+					<div>
+						<% if (current_user.voted_for? post.trackable) %>
+						<% if current_user.liked? post.trackable %>
+						<%= button_to  unvoteUp_post_path(post.trackable), :class => "btn btn-primary pull-left",  method: :put  do%>
+						<i class=" fa fa-thumbs-up fa-lg"></i> <%= post.trackable.votes_for.up.size %> Unvote Like
+						<% end %>
+						<% elsif  current_user.disliked? post.trackable %>
+						<%= button_to  unvoteDown_post_path(post.trackable), :class => "btn btn-primary pull-left",  method: :put  do%>
+						<i class=" fa fa-thumbs-down fa-lg"></i> <%= post.trackable.votes_for.down.size %> Unvote Dislike
+						<% end %>
+						<% end %>
+						<% else %>
+						<%= button_to  like_post_path(post.trackable), :class => "btn btn-primary pull-left", :style => "margin-right: 1%;",  method: :put  do%>
+						<i class=" fa fa-thumbs-up fa-lg"></i> <%= post.trackable.votes_for.up.size %>
+						<% end %>
+						<%= button_to dislike_post_path(post.trackable), :class => "btn btn-primary pull-left", method: :put do%>
+						<i class=" fa fa-thumbs-down fa-lg"></i> <%= post.trackable.votes_for.down.size %>
+						<% end %>
+						<% end %>
+					</div>
 				</div>
 			</div>
 		</div>
