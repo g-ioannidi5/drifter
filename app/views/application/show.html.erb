@@ -1,228 +1,168 @@
+<div class="container">
+	<div class="panel panel-default">
+		<ul class="nav nav-tabs" role="tablist">
+			<li class="active">
+				<a href="#home" role="tab" data-toggle="tab"><i class="fa fa-picture-o"></i> Photos</a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane fade active in" id="home">
+				<% @photos.each do |photo| %>
+				<%= image_tag(photo.attachment.url, height: "240") %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<!--Friends -->
+			<div class="panel panel-default">
+				<div class="panel-heading panel-heading-gray">
+					<i class="fa fa-pencil"></i> About
+				</div>
+				<div class="panel-body">
+					<ul class="list-unstyled profile-about">
+						<li>
+							<div class="row">
+								<div class="col-sm-4">
+									<%= image_tag(@user2.avatar.url, class: "img-responsive", height: "240") %>
+								</div>
+								<div class="col-sm-8">
+									<% if current_user != @user2 %>
+									<% if current_user.friends? @user2 %>
+									<%= button_to  unfollow_user_path(@user2), class: "btn btn-danger", method: :delete do %>
+									<i class=" fa fa-times"></i> Unfollow
+									<% end %>
+									<% else %>
+									<%= button_to follow_user_path(@user2), class: "btn btn-primary", method: :post do %>
+									<i class=" fa fa-user"></i> Follow
+									<% end %>
+									<% end %>
+									<% end %>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="row">
+								<div class="col-sm-4">
+									<span class="text-muted">Username</span>
+								</div>
+								<div class="col-sm-8">
+									<%= @user2.username%>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="row">
+								<div class="col-sm-4">
+									<span class="text-muted">Name</span>
+								</div>
+								<div class="col-sm-8">
+									<%= @user2.name%>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="row">
+								<div class="col-sm-4">
+									<span class="text-muted">Date of Birth</span>
+								</div>
+								<div class="col-sm-8">
+									<%= @user2.date_of_birth.strftime("%d-%m-%y")%>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="row">
+								<div class="col-sm-4">
+									<span class="text-muted">Email</span>
+								</div>
+								<div class="col-sm-8">
+									<%= @user2.email%>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
 
-      <div class="container">
-        <div class="panel panel-default">
-            <ul class="nav nav-tabs" role="tablist">
-                <li class="active"><a href="#home" role="tab" data-toggle="tab"><i class="fa fa-picture-o"></i> Photos</a>
-                </li>
-            </ul>
-            <div class="tab-content">
-                <div class="tab-pane fade active in" id="home">
-	            	<% @photos.each do |photo| %>
-						<%= image_tag(photo.attachment.url, height: "240") %>
+			<!--Friends -->
+			<div class="panel panel-default">
+				<div class="panel-heading panel-heading-gray">
+					<i class="icon-user-1"></i> Following
+				</div>
+				<ul class="list-unstyled friends-list">
+					<% @user2.friends.each do |friend| %>
+					<li>
+						<%= link_to image_tag(friend.avatar.url, class: "img-responsive", width: "110"), controller: 'application', action: 'show', username: friend.username %>
+					</li>
 					<% end %>
-            	</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <!--Friends -->
-                <div class="panel panel-default">
-                    <div class="panel-heading panel-heading-gray">
-                        <i class="fa fa-info-circle"></i> About                 
-                    </div>
-                    <div class="panel-body">
-                        <ul class="list-unstyled profile-about">
-	                        <li>
-                              	<div class="row">                                    
-                                    <div class="col-sm-4"> 
-	                                    <%= image_tag(@user2.avatar.url, class: "img-responsive", height: "240") %> 
-                                    </div>
-                                    <div class="col-sm-8">
-                                       	<% if current_user != @user2 %>
-											<% if current_user.friends? @user2 %>
-												<%= button_to  unfollow_user_path(@user2), class: "btn btn-danger", method: :delete do %>
-													<i class=" fa fa-times"></i> Unfollow 
-												<% end %>
-											<% else %>
-												<%= button_to follow_user_path(@user2), class: "btn btn-primary", method: :post do %>
-													<i class=" fa fa-user"></i> Follow 
-												<% end %>
-											<% end %>
-										<% end %>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                              <div class="row">
-                                    <div class="col-sm-4"><span class="text-muted">Username</span>
-                                    </div>
-                                    <div class="col-sm-8"><%=@user2.username%></div>
-                                </div>
-                            </li>
-                            <li>
-                              <div class="row">
-                                    <div class="col-sm-4"><span class="text-muted">Name</span>
-                                    </div>
-                                    <div class="col-sm-8"><%=@user2.name%></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="row">
-                                    <div class="col-sm-4"><span class="text-muted">Date of Birth</span>
-                                    </div>
-                                    <div class="col-sm-8"><%=@user2.date_of_birth.strftime("%d-%m-%y")%></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="row">
-                                    <div class="col-sm-4"><span class="text-muted">Email</span>
-                                    </div>
-                                    <div class="col-sm-8"><%=@user2.email%></div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-
-                <!--Friends -->
-                <div class="panel panel-default">
-                    <div class="panel-heading panel-heading-gray">
-                        <i class="icon-user-1"></i> Following
-                    </div>
-                    <ul class="list-unstyled friends-list">
-	                    <% @user2.friends.each do |friend| %>
-	                    	<li>
-								<%= link_to image_tag(friend.avatar.url, class: "img-responsive", width: "110"), controller: 'application', action: 'show', username: friend.username %>
-							</li>
-						<% end %>			
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading panel-heading-gray">
-				<i class="fa fa-bookmark"></i> Public Activity
-            </div>
-            <div class="panel-body">
-            	<% @activities.each do |activity| %>
-                <div class="progress" style="background-color: transparent;">	
-					<%= link_to activity.owner.username, activity.owner if activity.owner %>
-					<%= render_activity activity %>
-                </div>
-               <hr>
-               <% end %>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading panel-heading-gray">
-                <i class="fa fa-bookmark"></i> Posts
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-4">
-<!--
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <a href="#" class="h5 margin-none">Climb a Mountain</a>
-                                <div class="text-muted">
-                                    <small><i class="fa fa-calendar"></i> 24/10/2014</small>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <img src="assets/place1-full.jpg" alt="image" class="img-responsive" />
-                            </a>
-                            <div class="panel-body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor impedit ipsum laborum maiores tempore veritatis....</p>
-                                <div>
-                                    <a href="#" class="btn btn-primary btn-xs pull-right">read</a>
-                                    <a href="#" class="text-muted"> <i class="fa fa-comments"></i> 6</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="panel panel-default">
-                            <div class="panel-body text-center">
-                                <a href="#" class="h5 margin-none">Vegetarian Pizza</a>
-                                <div class="text-muted">
-                                    <small><i class="fa fa-calendar"></i> 24/10/2014</small>
-                                </div>
-                                <div class="rating">
-                                    <span class="star"></span>
-                                    <span class="star filled"></span>
-                                    <span class="star filled"></span>
-                                    <span class="star filled"></span>
-                                    <span class="star filled"></span>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <img src="assets/food1-full.jpg" alt="image" class="img-responsive" />
-                            </a>
-                            <div class="panel-body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor impedit ipsum laborum maiores tempore veritatis....</p>
-                                <div>
-                                    <a href="#" class="btn btn-primary btn-xs pull-right">read</a>
-                                    <a href="#" class="text-muted"> <i class="fa fa-comments"></i> 6</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <a href="#" class="btn btn-success btn-xs pull-right"><i class="fa fa-check-circle"></i></a>
-                                <a href="#" class="h5">Win a Holiday</a>
-                                <div class="text-muted">
-                                    <small><i class="fa fa-calendar"></i> 24/10/2014</small>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <img src="assets/place2-full.jpg" alt="image" class="img-responsive" />
-                            </a>
-                            <div class="panel-body">
-                                <ul class="icon-list block bordered">
-                                    <li><i class="fa fa-calendar fa-fw"></i> <a href="#">1 Week</a>
-                                    </li>
-                                    <li><i class="fa fa-users fa-fw"></i> <a href="#"> 2 People</a>
-                                    </li>
-                                    <li><i class="fa fa-map-marker fa-fw"></i> <a href="#">Miami, FL, USA</a>
-                                    </li>
-                                </ul>
-                                
--->
-            <div class="tab-content">
-                <div class="tab-pane fade active in" id="home">
-					<%= will_paginate @posts, :param_name => 'posts_page' %>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading panel-heading-gray">
+			<i class="fa fa-bookmark"></i> Public Activity
+		</div>
+		<div class="panel-body">
+			<% @activities.each do |activity| %>
+			<div class="progress" style="background-color: transparent;">
+				<%= link_to activity.owner.username, activity.owner if activity.owner %>
+				<%= render_activity activity %>
+			</div>
+			<hr>
+			<% end %>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading panel-heading-gray">
+			<i class="fa fa-bookmark"></i> Posts
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-4">
 					<% @posts.each do |post| %>
-						<% if post.attachment.url %>
-							<%= image_tag(post.attachment.url, width: "400") %>
-							<br />
-							<br />
-						<% else %>
-							<br />
-						<% end %>
-						<%= post.content %>
-						<br />
-						<br />
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<a class="h5 margin-none" href="/user/<%= current_user.username %>"> <%= current_user.name %> </a>
+							<div class="text-muted">
+								<small><i class="fa fa-calendar"></i> <%= post.created_at.strftime("%D") %></small>
+							</div>
+						</div>
+						<a href="#"">
+						<%= image_tag(post.attachment.url, class: "img-responsive", width: "550") %>
+						</a>
+						<div class="panel-body">
+						<p><%= post.content %></p>
+						<div>
 						<% if (current_user.voted_for? post) %>
-							<% if current_user.liked? post %>
-								<%= button_to  unvoteUp_post_path(post),  method: :put  do%>
-									<i class=" fa fa-thumbs-up fa-lg"></i> <%= post.votes_for.up.size %> Unvote Like
-								<% end %>
-							<% elsif  current_user.disliked? post %>
-								<%= button_to  unvoteDown_post_path(post),  method: :put  do%>
-									<i class=" fa fa-thumbs-down fa-lg"></i> <%= post.votes_for.down.size %> Unvote Dislike
-								<% end %>
-							<% end %>
-						<% else %>
-							<%= button_to  like_post_path(post),  method: :put  do%>
-								<i class=" fa fa-thumbs-up fa-lg"></i> <%= post.votes_for.up.size %>
-							<% end %>
-							<%= button_to dislike_post_path(post), method: :put do%>
-								<i class=" fa fa-thumbs-down fa-lg"></i> <%= post.votes_for.down.size %>
-							<% end %>
+						<% if current_user.liked? post %>
+						<%= button_to  unvoteUp_post_path(post), :class => "btn btn-primary pull-left",  method: :put  do%>
+						<i class=" fa fa-thumbs-up fa-lg"></i> <%= post.votes_for.up.size %> Unvote Like
 						<% end %>
-						<br />
-						<%= post.created_at.strftime("%a, %d %b. %Y") %>
-						<br />
-					<% end %>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+						<% elsif  current_user.disliked? post %>
+						<%= button_to  unvoteDown_post_path(post), :class => "btn btn-primary pull-left",  method: :put  do%>
+						<i class=" fa fa-thumbs-down fa-lg"></i> <%= post.votes_for.down.size %> Unvote Dislike
+						<% end %>
+						<% end %>
+						<% else %>
+						<%= button_to  like_post_path(post), :class => "btn btn-primary pull-left", :style => "margin-right: 1%;",  method: :put  do%>
+						<i class=" fa fa-thumbs-up fa-lg"></i> <%= post.votes_for.up.size %>
+						<% end %>
+						<%= button_to dislike_post_path(post), :class => "btn btn-primary pull-left", method: :put do%>
+						<i class=" fa fa-thumbs-down fa-lg"></i> <%= post.votes_for.down.size %>
+						<% end %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<%end%>
+		</div>
+	</div>
+</div>
+</div>
+</div>
