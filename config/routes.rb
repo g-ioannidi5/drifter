@@ -48,6 +48,7 @@ end
   get 'messages', to: 'application#messages'
   get 'user/:username', to: 'application#show'
   get 'users/:id', to: 'application#show'
+  match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
  
   match 'users' => 'application#users', via: :get
   match 'find_friends', :to => 'application#findFriends', via: :get

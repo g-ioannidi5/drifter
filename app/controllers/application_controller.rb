@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     @user2 = User.where("username = ?", params[:username]).first
     @posts = Post.where("user_id = ?", @user2.id)
     @photos = Post.where("user_id = ? AND attachment != ?", @user2.id, "")
-    @activities = PublicActivity::Activity.where("owner_id = ?", @user2.id).last(10)
+    @activities = PublicActivity::Activity.where("owner_id = ?", @user2.id).order(created_at: :desc).last(10)
   end
 
   def users
@@ -34,8 +34,8 @@ class ApplicationController < ActionController::Base
   def home
     @user = current_user
     @post = Post.new
-    @activities = PublicActivity::Activity.where("owner_id = ?", current_user.id).last(10)
-    @notifications = PublicActivity::Activity.where("recipient_id = ?", current_user.id).last(10)
+    @activities = PublicActivity::Activity.where("owner_id = ?", current_user.id).order(created_at: :desc).last(10)
+    @notifications = PublicActivity::Activity.where("recipient_id = ?", current_user.id).order(created_at: :desc).last(10)
     @friends = Friendship.where("user_id =?", @user.id)
     @friends2 ||= Array.new
     @friends.each do |friend|
@@ -44,6 +44,10 @@ class ApplicationController < ActionController::Base
     @friends4 = User.where(id: @friends2).last(9)
     @friends3 = User.where(id: @friends2)
     @posts = PublicActivity::Activity.where(owner_id: @friends3).order(created_at: :desc).paginate(:page => params[:page], :per_page => 2)
+  end
+
+
+    def page_not_found
   end
 
   protected

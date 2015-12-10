@@ -18,6 +18,7 @@ Rails.application.config.assets.precompile += %w( scripts.js )
 Rails.application.config.assets.precompile += %w( iconFile.js )
 
 Rails.application.config.assets.precompile += %w( endless.js )
+Rails.application.config.assets.precompile += %w( style.css )
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
