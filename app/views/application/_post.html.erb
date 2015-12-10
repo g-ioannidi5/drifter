@@ -9,6 +9,18 @@
 						</div>
 					</div>
 				</div>
+				
+				<% if post.trackable.user.username != post.owner.username %>
+								<div class="panel-heading">
+					<div class="media">
+						<a href="/user/<%= post.trackable.user.username %>" class="pull-left"> <%= image_tag(post.trackable.user.avatar, :class => "media-object", :style => "widht: 50px; height: 50px;") %> </a>
+						<div class="media-body">
+							<a href="/user/<%= post.trackable.user.username %>"><%= post.owner.name %></a>
+							<span>on <%= post.trackable.created_at.strftime('%a, %d %b %Y') %> </span>
+						</div>
+					</div>
+				</div>
+				<% end %>
 				<div class="panel-body">
 					<p>
 						<%= post.trackable.content %>
