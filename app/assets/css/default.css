@@ -17696,4 +17696,8 @@ body > .container {
   display: block;
 }
 
+.fixed {
+	position: fixed;
+}
+
 /*# sourceMappingURL=default.css.map */
