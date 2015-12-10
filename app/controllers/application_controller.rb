@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
     @user = current_user
     @post = Post.new
     @activities = PublicActivity::Activity.where("owner_id = ?", current_user.id).order(created_at: :desc).last(10)
-    @notifications = PublicActivity::Activity.where("recipient_id = ?", current_user.id).order(created_at: :desc).last(10)
+    @notifications = PublicActivity::Activity.where("recipient_id = ? AND owner_id != ?", current_user.id, current_user.id).order(created_at: :desc).last(10)
     @friends = Friendship.where("user_id =?", @user.id)
     @friends2 ||= Array.new
     @friends.each do |friend|
