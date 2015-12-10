@@ -1,6 +1,3 @@
-$('#postsDiv').append(<%= j render(@posts)%>);
-<% if @posts.next_page%>
-	$('.pagination').replaceWith('<%= j will_paginate(@posts)%>');
-<% else %>
-	$('.pagination').remove();
-<% end %>%
+$('#postsDiv').append('<%= j render :partial => 'post', :collection => @posts %>');
+$('.pagination').replaceWith('<%= j will_paginate @posts%>');
+$('.pagination').hide();

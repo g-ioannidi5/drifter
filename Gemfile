@@ -4,6 +4,8 @@ gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
 
 gem 'sse-rails'
 
+gem 'kaminari'
+
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
