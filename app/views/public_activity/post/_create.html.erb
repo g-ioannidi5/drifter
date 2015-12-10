@@ -1,10 +1,10 @@
 added a post
 
 <% if activity.trackable %>
-  <%= link_to activity.trackable.content, activity.trackable%> <% if activity.created_at > Time.now.beginning_of_day %>
+  <%= link_to activity.trackable.content, activity.trackable%> <% if activity.created_at > Time.now.beginning_of_day %> about
     <%="#{time_ago_in_words(activity.created_at)} ago"%> 
 <% else %>
-    <%= activity.created_at.strftime("%m/%d/%Y %I:%M%p") %>
+   on  <%= activity.created_at.strftime("%m/%d/%Y %I:%M%p") %>
 <% end %> 
 <% else %>
   which has since been removed
