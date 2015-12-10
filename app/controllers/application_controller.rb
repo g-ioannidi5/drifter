@@ -34,8 +34,8 @@ class ApplicationController < ActionController::Base
   def home
     @user = current_user
     @post = Post.new
-    @activities = PublicActivity::Activity.where("owner_id = ?", current_user.id)
-    @notifications = PublicActivity::Activity.where("recipient_id = ?", current_user.id)
+    @activities = PublicActivity::Activity.where("owner_id = ?", current_user.id).last(10)
+    @notifications = PublicActivity::Activity.where("recipient_id = ?", current_user.id).last(10)
     @friends = Friendship.where("user_id =?", @user.id)
     @friends2 ||= Array.new
     @friends.each do |friend|
